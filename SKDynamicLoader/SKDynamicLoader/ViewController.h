@@ -9,6 +9,12 @@
 
 @interface ViewController : UIViewController
 
++ (void)classMethodTest1;
+- (void)instanceMethodTest1;
++ (void)classMethodTest2;
+- (void)instanceMethodTest2;
+
+- (void)logWithContent:(NSString *)content;
 
 @end
 

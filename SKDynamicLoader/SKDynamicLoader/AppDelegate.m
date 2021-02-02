@@ -6,6 +6,7 @@
 //
 
 #import "AppDelegate.h"
+#import "A.h"
 
 @interface AppDelegate ()
 
@@ -15,7 +16,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+//    [A executeJSMethod:@"logWithContent:" moduleName:@"ViewController"];
     return YES;
 }
 
