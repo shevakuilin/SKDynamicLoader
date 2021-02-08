@@ -43,4 +43,8 @@
     return @"Value";
 }
 
+- (void)toDetailedWithVCName:(NSString *)vcName hiddenBottom:(BOOL)hiddenBottom width:(CGFloat)width height:(CGFloat)height {
+    NSLog(@"vcName = %@, hiddenBottom = %@, width = %.2f, height = %.2f", vcName, hiddenBottom?@"true":@"false", width, height);
+}
+
 @end

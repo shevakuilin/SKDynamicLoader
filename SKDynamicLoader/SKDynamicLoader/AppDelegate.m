@@ -17,8 +17,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 //    [A executeJSMethod:@"logWithContent:" moduleName:@"ViewController"];
-    NSString *value = [A executeJSReturnValueMethod:@"getValue" moduleName:@"ViewController"];
-    NSLog(@"value = %@", value);
+//    NSString *value = [A executeJSReturnValueMethod:@"getValue" moduleName:@"ViewController"];
+//    NSLog(@"value = %@", value);
+    [A executeJSVoidMethod:@"toDetailedWithVCName:hiddenBottom:width:height:" moduleName:@"ViewController" arguments:@"testVC", true, 25, 80, nil];
     return YES;
 }
 
