@@ -19,6 +19,14 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (void)executeJSVoidMethod:(NSString *)methodName moduleName:(NSString *)moduleName;
 
+/** 执行JS「有返回值 & 无参数」方法
+ *
+ * @param methodName    方法名
+ * @param moduleName    模块名
+ *
+ */
++ (id)executeJSReturnValueMethod:(NSString *)methodName moduleName:(NSString *)moduleName;
+
 @end
 
 NS_ASSUME_NONNULL_END

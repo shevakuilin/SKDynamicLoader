@@ -16,5 +16,7 @@
 
 - (void)logWithContent:(NSString *)content;
 
+- (NSString *)getValue;
+
 @end
 

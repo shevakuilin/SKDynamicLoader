@@ -38,4 +38,9 @@
     NSLog(@"logWithContent:%@", content);
 }
 
+- (NSString *)getValue {
+    NSLog(@"执行getValue");
+    return @"Value";
+}
+
 @end

@@ -7,7 +7,7 @@
 
 #import "A.h"
 #import <objc/runtime.h>
-#import "ViewController.h"
+//#import "ViewController.h"
 
 @implementation A
 
@@ -29,6 +29,24 @@
 //            ((id(*)(id, SEL, UIView*, id))imp)(self, sel, [UIView new], @"DFD");
         }
     }
+}
+
++ (id)executeJSReturnValueMethod:(NSString *)methodName moduleName:(NSString *)moduleName {
+    Class class = NSClassFromString(moduleName);
+    // 判断该类是否存在
+    if (class) {
+        SEL sel = NSSelectorFromString(methodName);
+        if ([class instancesRespondToSelector:sel]) { // 实例方法
+            IMP imp = [class instanceMethodForSelector:sel];
+            // 执行
+            return ((id(*)(id, SEL, id))imp)(self, sel, [class new]);
+        } else if ([class respondsToSelector:sel]) { // 类方法
+            IMP imp = [class methodForSelector:sel];
+            // 执行
+            return ((id(*)(id, SEL, id))imp)(self, sel, [class new]);
+        }
+    }
+    return nil;
 }
 
 #pragma mark - Private
