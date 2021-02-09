@@ -43,8 +43,8 @@
     return @"Value";
 }
 
-- (void)toDetailedWithVCName:(NSString *)vcName hiddenBottom:(BOOL)hiddenBottom width:(CGFloat)width height:(CGFloat)height {
-    NSLog(@"vcName = %@, hiddenBottom = %@, width = %.2f, height = %.2f", vcName, hiddenBottom?@"true":@"false", width, height);
+- (void)toDetailedWithVCName:(NSString *)vcName hiddenBottom:(BOOL)hiddenBottom width:(CGFloat)width data:(NSDictionary *)data {
+    NSLog(@"vcName = %@, hiddenBottom = %@, width = %.2f, data = %@", vcName, hiddenBottom?@"true":@"false", width, data);
 }
 
 @end

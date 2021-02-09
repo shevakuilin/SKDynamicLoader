@@ -26,10 +26,13 @@ NS_ASSUME_NONNULL_BEGIN
  * @param methodName    方法名
  * @param moduleName    模块名
  * @param arg1                 参数值，不限制数量
+ * @warning 注意 arg1, ... 传入的参数类型必须相同，否则会导致参数列表访问错误内存，从而抛出EXC_BAD_ACCESS
  *
  */
 
-+ (void)executeJSVoidMethod:(NSString *)methodName moduleName:(NSString *)moduleName arguments:(id)arg1,...NS_REQUIRES_NIL_TERMINATION;
+//+ (void)executeJSVoidMethod:(NSString *)methodName moduleName:(NSString *)moduleName arguments:(id)arg1, ...NS_REQUIRES_NIL_TERMINATION;
+
++ (void)executeJSVoidMethod:(NSString *)methodName moduleName:(NSString *)moduleName arguments:(NSArray *)arguments;
 
 /** 执行JS「有返回值 & 无参数」方法
  *

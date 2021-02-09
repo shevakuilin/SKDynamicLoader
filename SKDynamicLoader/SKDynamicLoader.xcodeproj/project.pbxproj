@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		072609DF25D0D67F00535BDD /* BridgeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 072609DE25D0D67F00535BDD /* BridgeModel.m */; };
+		0778DF3125D23D3700F3155B /* NSMutableArray+variadicMethodExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 0778DF3025D23D3700F3155B /* NSMutableArray+variadicMethodExample.m */; };
 		078EF28D25B982C0005428A4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 078EF28C25B982C0005428A4 /* AppDelegate.m */; };
 		078EF29025B982C0005428A4 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 078EF28F25B982C0005428A4 /* SceneDelegate.m */; };
 		078EF29325B982C0005428A4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 078EF29225B982C0005428A4 /* ViewController.m */; };
@@ -21,6 +22,8 @@
 /* Begin PBXFileReference section */
 		072609DD25D0D67F00535BDD /* BridgeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgeModel.h; sourceTree = "<group>"; };
 		072609DE25D0D67F00535BDD /* BridgeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BridgeModel.m; sourceTree = "<group>"; };
+		0778DF2F25D23D3700F3155B /* NSMutableArray+variadicMethodExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+variadicMethodExample.h"; sourceTree = "<group>"; };
+		0778DF3025D23D3700F3155B /* NSMutableArray+variadicMethodExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+variadicMethodExample.m"; sourceTree = "<group>"; };
 		078EF28825B982C0005428A4 /* SKDynamicLoader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SKDynamicLoader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		078EF28B25B982C0005428A4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		078EF28C25B982C0005428A4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -79,6 +82,8 @@
 				078EF29925B982C2005428A4 /* LaunchScreen.storyboard */,
 				078EF29C25B982C2005428A4 /* Info.plist */,
 				078EF29D25B982C2005428A4 /* main.m */,
+				0778DF2F25D23D3700F3155B /* NSMutableArray+variadicMethodExample.h */,
+				0778DF3025D23D3700F3155B /* NSMutableArray+variadicMethodExample.m */,
 			);
 			path = SKDynamicLoader;
 			sourceTree = "<group>";
@@ -166,6 +171,7 @@
 				078EF2A825B9835B005428A4 /* A.m in Sources */,
 				078EF29325B982C0005428A4 /* ViewController.m in Sources */,
 				072609DF25D0D67F00535BDD /* BridgeModel.m in Sources */,
+				0778DF3125D23D3700F3155B /* NSMutableArray+variadicMethodExample.m in Sources */,
 				078EF28D25B982C0005428A4 /* AppDelegate.m in Sources */,
 				078EF29E25B982C2005428A4 /* main.m in Sources */,
 				078EF29025B982C0005428A4 /* SceneDelegate.m in Sources */,

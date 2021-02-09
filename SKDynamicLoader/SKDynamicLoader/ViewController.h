@@ -18,7 +18,7 @@
 
 - (NSString *)getValue;
 
-- (void)toDetailedWithVCName:(NSString *)vcName hiddenBottom:(BOOL)hiddenBottom width:(CGFloat)width height:(CGFloat)height;
+- (void)toDetailedWithVCName:(NSString *)vcName hiddenBottom:(BOOL)hiddenBottom width:(CGFloat)width data:(NSDictionary *)data;
 
 @end
 

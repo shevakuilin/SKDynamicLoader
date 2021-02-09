@@ -7,6 +7,7 @@
 
 #import "AppDelegate.h"
 #import "A.h"
+#import "NSMutableArray+variadicMethodExample.h"
 
 @interface AppDelegate ()
 
@@ -19,7 +20,17 @@
 //    [A executeJSMethod:@"logWithContent:" moduleName:@"ViewController"];
 //    NSString *value = [A executeJSReturnValueMethod:@"getValue" moduleName:@"ViewController"];
 //    NSLog(@"value = %@", value);
-    [A executeJSVoidMethod:@"toDetailedWithVCName:hiddenBottom:width:height:" moduleName:@"ViewController" arguments:@"testVC", true, 25, 80, nil];
+//    [A executeJSVoidMethod:@"toDetailedWithVCName:hiddenBottom:width:height:" moduleName:@"ViewController" arguments:@"testVC", @"2",@"3",@"4", nil];
+//    NSMutableArray *array = [NSMutableArray array];
+//    [array appendObjects:@"1",@"2",@"3",@"4",nil];
+    
+    CGFloat width = 25;
+    NSDictionary *data = @{@"alertTitle": @"洋葱标题",
+                           @"alertContent": @"大家好",
+                           @"confirmTitle": @"确定"};
+    [A executeJSVoidMethod:@"toDetailedWithVCName:hiddenBottom:width:data:" moduleName:@"ViewController" arguments:@[@"testVC", @(true), @(width), data]];
+    NSLog(@"!!");
+
     return YES;
 }
 
