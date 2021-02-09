@@ -18,15 +18,15 @@
     // 判断该类是否存在
     if (class) {
         SEL sel = NSSelectorFromString(methodName);
+        IMP imp = nil;
         if ([class instancesRespondToSelector:sel]) { // 实例方法
-            IMP imp = [class instanceMethodForSelector:sel];
-            // 执行
-            ((void(*)(void))imp)();
+            imp = [class instanceMethodForSelector:sel];
         } else if ([class respondsToSelector:sel]) { // 类方法
-            IMP imp = [class methodForSelector:sel];
-            // 执行
-            ((void(*)(void))imp)();
+            imp = [class methodForSelector:sel];
 //            ((id(*)(id, SEL, UIView*, id))imp)(self, sel, [UIView new], @"DFD");
+        }
+        if (imp) {
+            ((void(*)(void))imp)();
         }
     }
 }
@@ -106,24 +106,15 @@
     // 判断该类是否存在
     if (class) {
         SEL sel = NSSelectorFromString(methodName);
+        Method method = nil;
         if ([class instancesRespondToSelector:sel]) { // 实例方法
-            Method method = class_getInstanceMethod(class, sel);
-            unsigned int count = method_getNumberOfArguments(method);
-            // 参数存在，且参数数量与方法提供的入参数量相同
-            if (arguments.count > 0 && (arguments.count + 2) == count) {
-                id instanceObjc = [class new];
-                NSInvocation *inv = [NSInvocation invocationWithMethodSignature:[instanceObjc methodSignatureForSelector:sel]];
-                [inv setSelector:sel];
-                [inv setTarget:instanceObjc];
-                for (int i = 0; i < arguments.count; i++) {
-                    id arg = arguments[i];
-                    [A setArgumenWithInvocation:inv index:i + 2 value:arg];
-                }
-                // 方法调用
-                [inv invoke];
-            }
+            method = class_getInstanceMethod(class, sel);
+            
         } else if ([class respondsToSelector:sel]) { // 类方法
-            Method method = class_getClassMethod(class, sel);
+            method = class_getClassMethod(class, sel);
+        }
+        
+        if (method) {
             unsigned int count = method_getNumberOfArguments(method);
             // 参数存在，且参数数量与方法提供的入参数量相同
             if (arguments.count > 0 && (arguments.count + 2) == count) {
@@ -147,13 +138,13 @@
     // 判断该类是否存在
     if (class) {
         SEL sel = NSSelectorFromString(methodName);
+        IMP imp = nil;
         if ([class instancesRespondToSelector:sel]) { // 实例方法
-            IMP imp = [class instanceMethodForSelector:sel];
-            // 执行
-            return ((id(*)(id, SEL))imp)(self, sel);
+            imp = [class instanceMethodForSelector:sel];
         } else if ([class respondsToSelector:sel]) { // 类方法
-            IMP imp = [class methodForSelector:sel];
-            // 执行
+            imp = [class methodForSelector:sel];
+        }
+        if (imp) {
             return ((id(*)(id, SEL))imp)(self, sel);
         }
     }
