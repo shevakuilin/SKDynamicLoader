@@ -6,6 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
+@class BridgeModel;
 
 @interface ViewController : UIViewController
 
@@ -19,6 +20,8 @@
 - (NSString *)getValue;
 
 - (void)toDetailedWithVCName:(NSString *)vcName hiddenBottom:(BOOL)hiddenBottom width:(CGFloat)width data:(NSDictionary *)data;
+
+- (CGFloat)calculateHeightWithModel:(BridgeModel *)model;
 
 @end
 

@@ -47,4 +47,9 @@
     NSLog(@"vcName = %@, hiddenBottom = %@, width = %.2f, data = %@", vcName, hiddenBottom?@"true":@"false", width, data);
 }
 
+- (CGFloat)calculateHeightWithModel:(BridgeModel *)model {
+    NSLog(@"model = %@", model);
+    return 335.7;
+}
+
 @end

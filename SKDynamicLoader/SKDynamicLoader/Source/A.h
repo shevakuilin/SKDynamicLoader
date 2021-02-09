@@ -49,6 +49,16 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (id)executeJSReturnValueMethod:(NSString *)methodName moduleName:(NSString *)moduleName;
 
+/** 执行JS「有返回值 & 无参数」方法
+ *
+ * @param methodName    方法名
+ * @param moduleName    模块名
+ * @param arguments      参数值，不限制数量
+ * @warning 注意 arguments 需要按照方法参数顺序传递，否则可能引发崩溃
+ *
+ */
++ (id)executeJSReturnValueMethod:(NSString *)methodName moduleName:(NSString *)moduleName arguments:(NSArray *)arguments;
+
 @end
 
 NS_ASSUME_NONNULL_END

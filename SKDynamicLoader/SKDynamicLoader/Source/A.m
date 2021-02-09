@@ -151,6 +151,48 @@
     return nil;
 }
 
++ (id)executeJSReturnValueMethod:(NSString *)methodName moduleName:(NSString *)moduleName arguments:(NSArray *)arguments {
+    Class class = NSClassFromString(moduleName);
+    // 判断该类是否存在
+    if (class) {
+        SEL sel = NSSelectorFromString(methodName);
+        Method method = nil;
+        if ([class instancesRespondToSelector:sel]) { // 实例方法
+            method = class_getInstanceMethod(class, sel);
+            
+        } else if ([class respondsToSelector:sel]) { // 类方法
+            method = class_getClassMethod(class, sel);
+        }
+        
+        if (method) {
+            unsigned int count = method_getNumberOfArguments(method);
+            // 参数存在，且参数数量与方法提供的入参数量相同
+            if (arguments.count > 0 && (arguments.count + 2) == count) {
+                id instanceObjc = [class new];
+                NSMethodSignature *signature = [instanceObjc methodSignatureForSelector:sel];
+                NSInvocation *inv = [NSInvocation invocationWithMethodSignature:signature];
+                [inv setSelector:sel];
+                [inv setTarget:instanceObjc];
+                for (int i = 0; i < arguments.count; i++) {
+                    id arg = arguments[i];
+                    [A setArgumenWithInvocation:inv index:i + 2 value:arg];
+                }
+                // 方法调用
+                [inv invoke];
+                // 获取返回值
+                id returnValue;
+                if (signature.methodReturnLength) { // 有返回值类型，才去获得返回值
+                    // 返回类型判断，比如返回值为常量需要包装成对象
+                    returnValue = [A getReturnValueWithInvocation:inv returnValue:returnValue];
+                }
+                
+                return returnValue;
+            }
+        }
+    }
+    return nil;
+}
+
 #pragma mark - Private
 
 + (void)setArgumenWithInvocation:(NSInvocation *)inv index:(int)index value:(id)value {
@@ -179,6 +221,38 @@
     } else {
         [inv setArgument:&(value) atIndex:index];
     }
+}
+
++ (id)getReturnValueWithInvocation:(NSInvocation *)inv returnValue:(id)returnValue {
+    // 获取返回值
+//    [inv getReturnValue:&returnValue];
+    // 如果不是oc对象，将其包装成一个oc对象
+//    if (strcmp(inv.methodSignature.methodReturnType, "@") != 0) {
+//        __weak NSObject *objc = CFBridgingRelease(&returnValue);
+//
+//        return objc;
+//    }
+    if (strcmp(inv.methodSignature.methodReturnType, @encode(float)) == 0) {
+        float f;
+        [inv getReturnValue:&f];
+        returnValue = [NSNumber numberWithFloat:f];
+    } else if (strcmp(inv.methodSignature.methodReturnType, @encode(double))  == 0) {
+        double d;
+        [inv getReturnValue:&d];
+        returnValue = [NSNumber numberWithDouble:d];
+    } else if (strcmp(inv.methodSignature.methodReturnType, @encode(int))  == 0) {
+        int i;
+        [inv getReturnValue:&i];
+        returnValue = [NSNumber numberWithInt:i];
+    } else if (strcmp(inv.methodSignature.methodReturnType, @encode(BOOL)) == 0 || strcmp(inv.methodSignature.methodReturnType, @encode(Boolean)) == 0) {
+        BOOL b;
+        [inv getReturnValue:&b];
+        returnValue = [NSNumber numberWithBool:b];
+    } else {
+        [inv getReturnValue:&returnValue];
+    }
+    
+    return returnValue;
 }
 
 // 打印方法列表
