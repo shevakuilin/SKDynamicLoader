@@ -9,6 +9,9 @@
 #import "A.h"
 #import "NSMutableArray+variadicMethodExample.h"
 #import "BridgeModel.h"
+#import "B.h"
+
+typedef void (^MyBlock)(NSString *string);
 
 @interface AppDelegate ()
 
@@ -41,9 +44,26 @@
 //    NSNumber *heightN = [A executeJSReturnValueMethod:model.eventName moduleName:model.moduleName arguments:@[model]];
 //    CGFloat height = [heightN floatValue];
 //    NSLog(@"height = %.2f", height);
-    [self testBlock:^(NSString *string) {
-        NSLog(@"执行成功，testBlock结果为：%@", string);
-    }];
+//    [self testBlock:^(NSString *string) {
+//        NSLog(@"执行成功，testBlock结果为：%@", string);
+//    }];
+
+    typedef void (^MyBlock)(NSString *string);
+    MyBlock block = ^(NSString *string) {
+        NSLog(@"block回调值:%@", string);
+    };
+    
+    BridgeModel *model = [BridgeModel new];
+    model.responseId = @"sadsa$4fds122kl";
+    model.moduleName = @"ViewController";
+    model.eventName = @"testDicCallBlock:";
+    
+    BridgeResponseData *data = [BridgeResponseData new];
+    data.code = @200;
+    data.msg = @"success";
+    data.data = @{@"callBack":[block copy]};
+    model.responseData = data;
+    [B executeJSVoidMethodWithModel:model];
 
     return YES;
 }

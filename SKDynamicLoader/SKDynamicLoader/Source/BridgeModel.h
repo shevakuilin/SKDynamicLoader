@@ -6,7 +6,14 @@
 //
 
 #import <Foundation/Foundation.h>
-@class BridgeResponseData;
+
+@interface BridgeResponseData : NSObject
+
+@property (nonatomic, strong) NSNumber *code;
+@property (nonatomic, copy) NSString *msg;
+@property (nonatomic, strong) NSDictionary *data;
+
+@end
 
 @interface BridgeModel : NSObject
 
@@ -17,10 +24,3 @@
 
 @end
 
-@interface BridgeResponseData : NSObject
-
-@property (nonatomic, strong) NSNumber *code;
-@property (nonatomic, copy) NSString *msg;
-@property (nonatomic, strong) NSDictionary *data;
-
-@end

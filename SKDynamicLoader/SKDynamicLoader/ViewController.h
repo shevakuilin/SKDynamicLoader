@@ -27,5 +27,7 @@ typedef void (^MyBlock)(NSString *string);
 
 - (void)getCallBack:(MyBlock)block;
 
+- (void)testDicCallBlock:(NSDictionary *)model;// callBack:(MyBlock)callBack;
+
 @end
 

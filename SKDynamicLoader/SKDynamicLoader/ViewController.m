@@ -58,4 +58,11 @@
     }
 }
 
+- (void)testDicCallBlock:(NSDictionary *)model {
+    MyBlock block = model[@"callBack"];
+    if (block) {
+        block(@"test success!");
+    }
+}
+
 @end

@@ -8,6 +8,10 @@
 #import "BridgeModel.h"
 #import "MJExtension.h"
 
+@implementation BridgeResponseData
+
+@end
+
 @implementation BridgeModel
 
 #pragma mark - 字段映射
@@ -19,3 +23,5 @@
 }
 
 @end
+
+
