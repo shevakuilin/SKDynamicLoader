@@ -31,18 +31,25 @@
 //                           @"confirmTitle": @"确定"};
 //    [A executeJSVoidMethod:@"toDetailedWithVCName:hiddenBottom:width:data:" moduleName:@"ViewController" arguments:@[@"testVC", @(true), @(width), data]];
 //    NSLog(@"!!");
-    BridgeModel *model = [BridgeModel new];
-    model.callId = @"asdasd3242dsafsdgsw5";
-    model.callData = @{@"alertTitle": @"洋葱标题",
-                       @"alertContent": @"大家好",
-                       @"confirmTitle": @"确定"};
-    model.eventName = @"calculateHeightWithModel:";
-    model.moduleName = @"ViewController";
-    NSNumber *heightN = [A executeJSReturnValueMethod:model.eventName moduleName:model.moduleName arguments:@[model]];
-    CGFloat height = [heightN floatValue];
-    NSLog(@"height = %.2f", height);
+//    BridgeModel *model = [BridgeModel new];
+//    model.callId = @"asdasd3242dsafsdgsw5";
+//    model.callData = @{@"alertTitle": @"洋葱标题",
+//                       @"alertContent": @"大家好",
+//                       @"confirmTitle": @"确定"};
+//    model.eventName = @"calculateHeightWithModel:";
+//    model.moduleName = @"ViewController";
+//    NSNumber *heightN = [A executeJSReturnValueMethod:model.eventName moduleName:model.moduleName arguments:@[model]];
+//    CGFloat height = [heightN floatValue];
+//    NSLog(@"height = %.2f", height);
+    [self testBlock:^(NSString *string) {
+        NSLog(@"执行成功，testBlock结果为：%@", string);
+    }];
 
     return YES;
+}
+
+- (void)testBlock:(void (^)(NSString *string))block {
+    [A executeJSVoidMethod:@"getCallBack:" moduleName:@"ViewController" arguments:@[block]];
 }
 
 

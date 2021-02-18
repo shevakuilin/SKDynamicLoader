@@ -52,4 +52,10 @@
     return 335.7;
 }
 
+- (void)getCallBack:(MyBlock)block {
+    if (block) {
+        block(@"11111");
+    }
+}
+
 @end

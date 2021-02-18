@@ -6,16 +6,21 @@
 //
 
 #import <Foundation/Foundation.h>
-
-NS_ASSUME_NONNULL_BEGIN
+@class BridgeResponseData;
 
 @interface BridgeModel : NSObject
 
-@property (nonatomic, copy) NSString *callId;
-@property (nonatomic, copy) NSString *moduleName;
-@property (nonatomic, copy) NSString *eventName;
-@property (nonatomic, strong) NSDictionary *callData;
+@property (nonatomic, copy) NSString *responseId;
+@property (nonatomic, copy) NSString *moduleName;   // 模块名
+@property (nonatomic, copy) NSString *eventName;    // 方法名
+@property (nonatomic, strong) BridgeResponseData *responseData;
 
 @end
 
-NS_ASSUME_NONNULL_END
+@interface BridgeResponseData : NSObject
+
+@property (nonatomic, strong) NSNumber *code;
+@property (nonatomic, copy) NSString *msg;
+@property (nonatomic, strong) NSDictionary *data;
+
+@end
